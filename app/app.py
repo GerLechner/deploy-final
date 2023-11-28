@@ -9,8 +9,8 @@ app = Flask(__name__, template_folder = 'templates')
 def datos_participantes():
 
     config = {
-        'user': 'root',
-        'password': 'root',
+        'user': os.getenv('DB_USER'),
+        'password': os.getenv('DB_PASSWORD'),
         'host': 'db',
         'port': '3306',
         'database': 'dbproyecto'
