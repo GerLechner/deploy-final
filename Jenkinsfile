@@ -40,7 +40,7 @@ pipeline {
                     
                     def scannerHome = tool name: 'SonarScanner'
                     withSonarQubeEnv('SonarQubeServer') {
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=analisis-deploy-flask -Dsonar.scanner.config.file=sonar-project.properties -X"   
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=analisis-deploy-flask-pruebas -Dsonar.scanner.config.file=sonar-project.properties -X"   
                     }
                 }
             }
