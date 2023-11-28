@@ -1,7 +1,7 @@
 version: "2"
 services:
   app:
-    image: glechner99/flask-app
+    image: flask-app
     container_name: flask-app-container
     build: ./app
     environment:
