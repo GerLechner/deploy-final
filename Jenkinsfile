@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Git Clone'){
             steps {
-                git credentialsId: 'GIT_CREDENTIALS', url: 'https://github.com/GerLechner/deploy-final'
+                git credentialsId: 'GIT_CREDENTIALS', url: 'https://github.com/GerLechner/deploy-final/pruebas'
             }
         }
     
