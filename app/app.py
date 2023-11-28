@@ -34,9 +34,9 @@ def index():
 def estudiantes():
     return jsonify({'estudiantes': datos_participantes()})
 
-@app.route('/probando')
-def hola():
-    return 'hola!!'
+@app.route('/romper')
+def romper():
+    os._exit(1)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
