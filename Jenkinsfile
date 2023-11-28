@@ -36,7 +36,7 @@ pipeline {
             steps{
                 script{
                     sh "docker start sonarqube"
-                    sleep(time:60, unit: "SECONDS")
+                    //sleep(time:60, unit: "SECONDS")
                     
                     def scannerHome = tool name: 'SonarScanner'
                     withSonarQubeEnv('SonarQubeServer') {
