@@ -72,13 +72,14 @@ pipeline {
                     sh "ssh ${produccion} 'sudo service docker restart'"
                     sh "ssh ${produccion} 'minikube start'"
                     sh "ssh ${produccion} 'kubectl apply -f \$(printf \"%s,\" $HOME/deploy-final/*.yaml | sed \"s/,\$//\")'"
-                    sleep(time:4, unit: "SECONDS")
+                    sleep(time:10, unit: "SECONDS")
                     sh "ssh ${produccion} 'minikube service app --url'"
-        
+                    sh " ssh $ { produccion } ’ kubectl scale deployment / app -- replicas 4 ’ "
+                    
                     def minikubeIp = sh(script:"ssh ${produccion} 'minikube ip'", returnStdout: true).trim()
                     def puerto = sh(script:"ssh ${produccion} 'kubectl get service app --output='jsonpath={.spec.ports[0].nodePort}' --namespace=default'", returnStdout: true).trim()
                     
-                    sh(script: "echo ssh -L 192.168.192.130:${puerto}:${minikubeIp}:${puerto}")
+                    sh(script: "echo ${minikubeIp}:${puerto}")
                     
                     //sh "ssh ${produccion} 'kubectl delete deployments,services app db'" 
                     
