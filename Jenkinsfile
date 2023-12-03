@@ -78,7 +78,6 @@ pipeline {
                     
                     //sh "ssh ${produccion} 'rm /$HOME/deploy-final/*.yaml'"
                     sh "ssh ${produccion} 'rm -r /$HOME/deploy-final'"
-                    sh "ssh ${produccion} 'rmdir /$HOME/deploy-final'"
 
                 }
             }
