@@ -69,8 +69,8 @@ pipeline {
                     
                     sh "mkdir -p /$HOME/deploy-final"
                     sh "scp -r Kubernetes ${produccion}:/$HOME/deploy-final"
-                    sh "ssh ${produccion} 'sudo service docker restart'"
-                    sh "ssh ${produccion} 'minikube start'"
+                    // sh "ssh ${produccion} 'sudo service docker restart'"
+                    // sh "ssh ${produccion} 'minikube start'"
                     sh "ssh ${produccion} 'kubectl apply -f \$(printf \"%s,\" $HOME/deploy-final/*.yaml | sed \"s/,\$//\")'"
                     sleep(time:10, unit: "SECONDS")
                     sh "ssh ${produccion} 'minikube service app --url'"
@@ -84,7 +84,7 @@ pipeline {
                     //sh "ssh ${produccion} 'kubectl delete deployments,services app db'" 
                     
                     sh "ssh ${produccion} 'rm /$HOME/deploy-final/*.yaml'"
-                    sh "ssh ${produccion} 'rmdir /$HOME/deploy-final'"
+                    sh "ssh ${produccion} 'rm -r /$HOME/deploy-final'"
                 
                 }
             }
