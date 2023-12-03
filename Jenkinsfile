@@ -83,7 +83,7 @@ pipeline {
                     
                     //sh "ssh ${produccion} 'kubectl delete deployments,services app db'" 
                     
-                    sh "ssh ${produccion} 'rm /$HOME/deploy-final/*.yaml'"
+                    //sh "ssh ${produccion} 'rm /$HOME/deploy-final/*.yaml'"
                     sh "ssh ${produccion} 'rm -r /$HOME/deploy-final'"
                 
                 }
